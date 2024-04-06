@@ -97,12 +97,16 @@ class War {
        return result
     }
 
-    soldierAttack(){
+    genericAttack(){
         let randomSaxonIndex = Math.floor(Math.random() * this.saxonArmy.length);
         let randomSaxon = this.saxonArmy[randomSaxonIndex];
     
         let randomVikingIndex = Math.floor(Math.random() * this.vikingArmy.length);
         let randomViking = this.vikingArmy[randomVikingIndex];
+
+        randomViking.receiveDamage(randomSaxon.strength)
+        randomSaxon.receiveDamage(randomViking.strength)
+
 
         if(randomViking.health <= 0){
             this.vikingArmy.splice(randomVikingIndex, 1)
