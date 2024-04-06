@@ -97,6 +97,20 @@ class War {
        return result
     }
 
+    soldierAttack(){
+        let randomSaxonIndex = Math.floor(Math.random() * this.saxonArmy.length);
+        let randomSaxon = this.saxonArmy[randomSaxonIndex];
+    
+        let randomVikingIndex = Math.floor(Math.random() * this.vikingArmy.length);
+        let randomViking = this.vikingArmy[randomVikingIndex];
+
+        if(randomViking.health <= 0){
+            this.vikingArmy.splice(randomVikingIndex, 1)
+        }if(randomSaxon.health <= 0){
+            this.saxonArmy.splice(randomSaxonIndex, 1)
+        }
+    }
+
     showStatus(){
         if (this.saxonArmy.length <= 0){
             return "Vikings have won the war of the century!"
